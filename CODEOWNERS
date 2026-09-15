@@ -1,0 +1,8 @@
+# Default owner. Replace or supplement this with a named maintainer team
+# before enforcing mandatory code-owner review in repository rules.
+* @Onuros-com
+
+# Security-sensitive automation and release material
+/.github/ @Onuros-com
+/SECURITY.md @Onuros-com
+/docs/ @Onuros-com
