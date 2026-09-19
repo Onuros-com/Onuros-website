@@ -1,0 +1,23 @@
+---
+import Logo from "./Logo.astro";
+const path = Astro.url.pathname;
+const pages = [["Network", "/network/"], ["Privacy", "/privacy/"], ["Mining", "/mining/"], ["Roadmap", "/roadmap/"]];
+const services = [["Explore", "https://explore.onuros.com"], ["Pool", "https://pool.onuros.com"], ["Docs", "https://docs.onuros.com"], ["Status", "https://status.onuros.com"]];
+---
+<header class="site-header">
+  <a class="home-link" href="/" aria-label="Onuros home"><Logo /></a>
+  <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Menu</span></button>
+  <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+    <div class="page-links">{pages.map(([label, href]) => <a class:list={{ active: path === href }} href={href}>{label}</a>)}</div>
+    <div class="service-links">{services.map(([label, href]) => <a href={href}>{label}<span aria-hidden="true">↗</span></a>)}</div>
+  </nav>
+</header>
+<script>
+  const button = document.querySelector<HTMLButtonElement>(".menu-button");
+  const nav = document.querySelector<HTMLElement>(".site-nav");
+  button?.addEventListener("click", () => {
+    const open = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", String(!open));
+    nav?.classList.toggle("open", !open);
+  });
+</script>

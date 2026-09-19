@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NetworkCanvas from "../components/NetworkCanvas.astro";
+const services = [
+  ["Explore", "Blockchain activity and network data", "https://explore.onuros.com"],
+  ["Pool", "Mining access and pool statistics", "https://pool.onuros.com"],
+  ["Docs", "Protocol and operator documentation", "https://docs.onuros.com"],
+  ["Status", "Public infrastructure availability", "https://status.onuros.com"],
+];
+---
+<BaseLayout title="Onuros — Private Proof-of-Work Network" description="Onuros is building practical private money with user-controlled disclosure and GPU-oriented proof of work.">
+  <section class="home-hero">
+    <NetworkCanvas />
+    <div class="hero-content"><p class="kicker">Private proof-of-work network</p><h1 class="display">Money should belong<br/>to its holder.</h1><p class="lead">Onuros is building practical private money with user-controlled disclosure, accessible GPU mining, and an open network engineered for measurable performance.</p><div class="hero-actions"><a class="primary-action" href="/network/">Explore the network <span>↗</span></a><a href="/roadmap/">View development status</a></div></div>
+    <p class="hero-note">Development network — not live on mainnet.</p>
+  </section>
+  <section class="section light"><div class="eyebrow-line"><p class="kicker">01 / Purpose</p></div><div class="split"><h2 class="section-title">Privacy without a master viewing key.</h2><div><p class="copy">Onuros is designed so ordinary transfers conceal sender, receiver, and amount on-chain. Disclosure belongs to the user—not the network operator.</p><a class="inline-link" href="/privacy/">Read the privacy model ↗</a></div></div><div class="fact-grid"><div class="fact"><strong>60s</strong><span>Block target</span></div><div class="fact"><strong>20</strong><span>Initial ONUROS reward</span></div><div class="fact"><strong>GPU</strong><span>Proof of work</span></div></div></section>
+  <section class="section"><div class="eyebrow-line"><p class="kicker">02 / Infrastructure</p></div><div class="split"><h2 class="section-title">One network.<br/>Clear entry points.</h2><p class="copy">Public services have separate addresses and security boundaries. Each can evolve without weakening the rest of the network.</p></div><div class="rule-list">{services.map(([name, description, href], index) => <a class="rule-row" href={href}><span>0{index + 1}</span><div><h3>{name}</h3><p>{description}</p></div><span class="arrow">OPEN ↗</span></a>)}</div></section>
+  <section class="section principles"><div class="eyebrow-line"><p class="kicker">03 / Commitments</p></div><div class="cards"><article class="card"><span class="number">01</span><h3>Private by design</h3><p>Shielded payments are the normal transfer path. There is no central master viewing key.</p></article><article class="card"><span class="number">02</span><h3>Proof before claims</h3><p>Performance and security statements are tied to published development evidence.</p></article><article class="card"><span class="number">03</span><h3>Fair launch</h3><p>No premine or presale. Mining rewards begin with the first spendable block.</p></article></div></section>
+</BaseLayout>
+<style>
+  .home-hero{position:relative;min-height:calc(100vh - 5.25rem);height:min(58rem,calc(100vh - 5.25rem));padding:clamp(7rem,12vh,11rem) clamp(1.25rem,9vw,9rem) 4rem;display:flex;align-items:center;overflow:hidden;background:radial-gradient(circle at 66% 42%,#1a1a1a 0,transparent 34%),#090909}.home-hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,9,9,.98) 0%,rgba(9,9,9,.73) 52%,rgba(9,9,9,.15) 100%)}.hero-content,.hero-note{position:relative;z-index:2}.hero-content{max-width:85rem}.hero-content .lead{margin:2rem 0}.hero-actions{display:flex;align-items:center;gap:2rem;margin-top:2.5rem;font-size:.84rem}.primary-action{display:inline-flex;align-items:center;gap:2rem;padding:1rem 1.2rem;background:#f3f3ef;color:#090909;font-weight:700}.hero-actions>a:not(.primary-action){color:#bbb}.hero-note{position:absolute;left:clamp(1.25rem,9vw,9rem);bottom:2rem;font-family:var(--mono);font-size:.68rem;color:#777}.inline-link{display:inline-block;margin-top:1.7rem;font-family:var(--mono);font-size:.75rem;color:#202020}.principles{background:#111}@media(max-width:650px){.home-hero{height:auto;min-height:44rem;padding-top:7rem;align-items:flex-start}.hero-actions{align-items:flex-start;flex-direction:column;gap:1.2rem}.hero-note{left:1.25rem}.home-hero:after{background:rgba(9,9,9,.58)}}
+</style>

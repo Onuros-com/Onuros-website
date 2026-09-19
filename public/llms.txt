@@ -1,0 +1,23 @@
+# Onuros
+
+Onuros is a privacy-focused proof-of-work blockchain project in development-network testing. It is not live on mainnet and has not completed an independent production security audit.
+
+## Core principles
+
+- Private payments are designed to conceal sender, receiver, and amount on-chain.
+- Disclosure is controlled by the user; there is no master viewing key.
+- Mining is GPU-oriented proof of work with CPU verification.
+- The economic model specifies a 60-second block target, 20 ONUROS initial block reward, four-year halving interval, 0.5 ONUROS permanent reward floor, and no premine or presale.
+
+## Key pages
+
+- https://onuros.com/network/
+- https://onuros.com/privacy/
+- https://onuros.com/mining/
+- https://onuros.com/roadmap/
+- https://docs.onuros.com/
+- https://explore.onuros.com/
+- https://pool.onuros.com/
+- https://status.onuros.com/
+
+Technical measurements describe development evidence, not guaranteed production performance.

@@ -1,0 +1,8 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const phases = [["01–02","Protocol and economics","Specified and implemented"],["03–07","Privacy, core, and scalability","Development gates completed"],["08","Wallet integration","Development qualification completed"],["09","Mining workflow","In progress"],["Later","Public testnet, audit, and launch readiness","Not started"]];
+---
+<BaseLayout title="Development Roadmap — Onuros" description="The current Onuros development roadmap and the boundary between completed engineering, active work, and future readiness gates.">
+  <section class="page-hero"><p class="kicker">Roadmap</p><h1 class="display">Progress without pretending.</h1><p class="lead">Onuros advances through ordered, evidence-backed stages. Completion means the full path works—not that a partial prototype exists.</p></section>
+  <section class="section"><div class="eyebrow-line"><p class="kicker">Current sequence</p></div><div class="rule-list">{phases.map(([stage,name,status]) => <div class="rule-row"><span>{stage}</span><div><h3>{name}</h3><p>{status}</p></div></div>)}</div><div class="notice">Onuros is not live on mainnet. Independent security review and public-testnet operation remain future requirements.</div></section>
+</BaseLayout>

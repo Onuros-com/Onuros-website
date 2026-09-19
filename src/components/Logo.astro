@@ -1,0 +1,17 @@
+---
+interface Props { compact?: boolean; }
+const { compact = false } = Astro.props;
+---
+<span class:list={["wordmark", { compact }]}>
+  <svg class="logo-symbol" viewBox="0 0 48 48" role="img" aria-label="Onuros temporary logo">
+    <circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="3" />
+    <path d="M9 28h10l5-12 5 12h10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter" />
+  </svg>
+  {!compact && <span>ONUROS</span>}
+</span>
+
+<style>
+  .wordmark { display:inline-flex; align-items:center; gap:.75rem; color:inherit; font-size:.79rem; font-weight:720; letter-spacing:.2em; }
+  .logo-symbol { width:2.15rem; height:2.15rem; flex:none; }
+  .compact .logo-symbol { width:1.8rem; height:1.8rem; }
+</style>
