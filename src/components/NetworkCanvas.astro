@@ -1,0 +1,49 @@
+<canvas id="network-canvas" aria-hidden="true"></canvas>
+<script>
+  const canvas = document.querySelector<HTMLCanvasElement>("#network-canvas");
+  if (canvas) {
+    const context = canvas.getContext("2d");
+    const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let points: {x:number;y:number;vx:number;vy:number}[] = [];
+    const resize = () => {
+      const ratio = Math.min(devicePixelRatio, 2);
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * ratio;
+      canvas.height = rect.height * ratio;
+      context?.setTransform(ratio, 0, 0, ratio, 0, 0);
+      const count = Math.max(18, Math.min(42, Math.round(rect.width / 32)));
+      points = Array.from({ length: count }, (_, index) => ({
+        x: ((index * 73) % 101) / 101 * rect.width,
+        y: ((index * 47) % 89) / 89 * rect.height,
+        vx: ((index % 5) - 2) * .035,
+        vy: (((index * 3) % 5) - 2) * .025,
+      }));
+    };
+    const draw = () => {
+      if (!context) return;
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
+      context.clearRect(0, 0, width, height);
+      for (let a = 0; a < points.length; a++) {
+        const point = points[a];
+        if (!reduceMotion) {
+          point.x = (point.x + point.vx + width) % width;
+          point.y = (point.y + point.vy + height) % height;
+        }
+        for (let b = a + 1; b < points.length; b++) {
+          const other = points[b];
+          const distance = Math.hypot(point.x - other.x, point.y - other.y);
+          if (distance < 165) {
+            context.strokeStyle = `rgba(255,255,255,${(1 - distance / 165) * .16})`;
+            context.beginPath(); context.moveTo(point.x, point.y); context.lineTo(other.x, other.y); context.stroke();
+          }
+        }
+        context.fillStyle = "rgba(255,255,255,.55)";
+        context.beginPath(); context.arc(point.x, point.y, 1.35, 0, Math.PI * 2); context.fill();
+      }
+      if (!reduceMotion) requestAnimationFrame(draw);
+    };
+    resize(); draw(); addEventListener("resize", resize);
+  }
+</script>
+<style>#network-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.78}</style>
